@@ -231,7 +231,7 @@ router.post('/pedidoUsuario', async (req,res)=>{
 })
 //----------------------------------------Usuarios----------------------------------------//
 router.get('/usuario', async(req,res)=>{
-        const usuario =await conexion.query('SELECT * FROM usuario'
+        const usuario =await conexion.query('SELECT id_usuario, username, u.nombre, apellido, a.nombre AS area FROM usuario u JOIN area a ON u.area = a.id_area'
         );
        
         res.render('user/usuario',{usuario: usuario});
