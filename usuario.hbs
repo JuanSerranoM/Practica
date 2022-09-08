@@ -1,0 +1,125 @@
+{{>navegacion}}
+
+<div class="m-3">
+    <table id="myTable" class="table table-secondary table-striped  ">
+                    <thead>
+                        <tr class="table-dark bg-gradient ">
+
+                        <th scope="col">ID</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Area</th>
+                        <th scope="col"></th>
+                        
+
+                        </tr>
+                    </thead>
+
+                    {{>tablaUsuario}}
+
+                    </table>
+</div>
+
+<div class="modal" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="EliminarUsuario" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
+      </div>
+      <div class="modal-body">
+        <p>¿Está seguro que desea eliminar el usuario?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrarEliminar">Cancelar</button>
+        <button type="button" class="btn btn-danger">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="EditarUsuario" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row  justify-content-center align-items-start">
+                <div class="col-sm-8">
+                    <form class=" pt-5" action="/user/usuarioAlta" method="post">
+                        <div class="col-auto">
+                                <div class="col-auto">
+                                    <label class="form-label" for="">Nombre</label>
+                                    <input name="nombre" class="form-control" type="text">
+                                </div>
+                                <div class="col-auto">
+                                    <label class="form-label" for="">Apellido</label>
+                                    <input name="apellido" class="form-control" type="text">
+                                </div>
+                            <div class="col-auto">
+                                <label class="col-md-5" for="">Area</label>
+                                <select class="form-control col-md-4" name="area" id="">
+                                    <option value="null" selected>Seleccionar</option>
+                                    <option value="3">legales</option>
+                                    <option value="2">Contable</option>
+                                    <option value="1">Sistema</option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label class="col-md-5" for="">Rol</label>
+                                <select class="form-control col-md-4" name="rol" id="">
+                                    <option value="null" selected>Seleccionar</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">Contables</option>
+                                    <option value="3">Defensor</option>
+                                    <option value="4">Empleado</option>
+                                    <option value="5">Responsable</option>
+                                </select>
+                            </div>            
+                            <div class="col-auto">
+                                <label class="col-md-5" for="">Usuario</label>
+                                <input name="username"  minlength="7" maxlength="8" class="form-control col-md-4" type="text">
+                            </div>
+                            <div class="col-auto">
+                                <label class="col-md-5" for="">Contraseña</label>
+                                <input name="password" class="form-control col-md-4" type="password">
+                            </div>
+                            <div class="col-auto">
+                                <label class="col-md-8" for="">Confirmar contraseña</label>
+                                <input class="form-control col-md-4" type="password">
+                            </div>
+
+                        </div>
+            
+                    </form>
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrarEditar">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+    function eliminar(id_usuario){
+        $("#modalEliminar").show();
+    }
+
+    function editar(id_usuario){
+        $("#modalEditar").show();
+    }
+
+    $("#cerrarEliminar").on("click",function (){
+        $("#modalEliminar").hide();
+    });
+    
+    $("#cerrarEditar").on("click",function (){
+        $("#modalEditar").hide();
+    });
+
+</script>
